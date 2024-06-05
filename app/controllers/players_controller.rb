@@ -17,7 +17,18 @@ class PlayersController < ApplicationController
       position: params[:position],
       dob: params[:dob],
     )
-    render json: {message: "Yello"}
+    render :show
+  end
+
+  def update
+    @player = Player.find_by(id: params[:id])
+    @player.update(
+      name: params[:name] || @player.name,
+      team: params[:team] || @player.team,
+      position: params[:position] || @player.position,
+      dob: params[:dob] || @player.dob,
+    )
+    render :show
   end
 
 end
