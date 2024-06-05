@@ -10,5 +10,14 @@ class PlayersController < ApplicationController
     render :show
   end
 
+  def create
+    @player = Player.create(
+      name: params[:name],
+      team: params[:team],
+      position: params[:position],
+      dob: params[:dob],
+    )
+    render json: {message: "Yello"}
+  end
 
 end
